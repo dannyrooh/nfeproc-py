@@ -25,9 +25,7 @@ class Signature:
     keyinfo: KeyInfo
 
     def __init__(self, child):
-
         # print(child)
-
         for tag in child:
             t = tag.lower()
             if t == '@xmlns':
@@ -35,5 +33,4 @@ class Signature:
             elif t == 'signaturevalue':
                 self.signaturevalue = child[tag]
             elif t == 'keyinfo':
-                print(t)
                 self.keyinfo = KeyInfo(child[tag])

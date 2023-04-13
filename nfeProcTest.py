@@ -24,29 +24,32 @@ else:
 
     # nfeProc
 
-    # title('nfeProc')
-    # print(f'@xmlns= {nfeProc.xmlns}')
-    # print(f'@versao= {nfeProc.versao}')
-    # print()
+    title('nfeProc')
+    print(f'@xmlns= {nfeProc.xmlns}')
+    print(f'@versao= {nfeProc.versao}')
+    print()
 
     # nfe
 
-    # title('Nfe')
-    # print(f'xmlns={nfeProc.nfe.xmlns}')
-    # print('infNfe')
+    title('Nfe')
+    print(f'xmlns={nfeProc.nfe.xmlns}')
+    print('infNfe')
 
-    # print('Signature')
+    # Signature
+    title('Signature')
     signature = nfeProc.nfe.signature
     print(f'  xmlns={signature.xmlns}')
     print(f'  signaturevalue={signature.signaturevalue}')
-
-    print(signature.keyinfo.x509data.x509certificate)
-
+    print(f'  KeyInfo')
+    print(f'          X509Data')
+    print(
+        f'                   X509Certificate={signature.keyinfo.x509data.x509certificate}')
     # protNfe
+    title('protNfe')
+    print(f'versao={nfeProc.protNfe.versao}')
+    print('InfProt')
 
-    # title('protNfe')
-    # print(f'versao={nfeProc.protNfe.versao}')
-    # print('InfProt')
+    for a in ['id', 'tpAmb', 'verAplic', 'chNfe', 'dhRecbto', 'nProt', 'digVal', 'cStat', 'xMotivo']:
+        print(f'  {a} = {getattr(nfeProc.protNfe.infoProt,a)}')
 
-    # for a in ['id', 'tpAmb', 'verAplic', 'chNfe', 'dhRecbto', 'nProt', 'digVal', 'cStat', 'xMotivo']:
-    #     print(f'  {a} = {getattr(nfeProc.protNfe.infoProt,a)}')
+    title('FIM')
